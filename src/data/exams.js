@@ -179,29 +179,64 @@ export const EXAMS = [
   },
 ];
 
-// 2026년 주요 시험 일정 예시 (실제 공식 일정으로 교체 필요)
+// 2026년 실제 시험 일정 (출처: 한국데이터산업진흥원 공식 홈페이지)
 export const EXAM_SCHEDULE = [
-  // SQLD
-  { id: 's1', examId: 'sqld', type: 'register_start', date: '2026-07-07', label: 'SQLD 접수 시작' },
-  { id: 's2', examId: 'sqld', type: 'register_end',   date: '2026-07-11', label: 'SQLD 접수 마감' },
-  { id: 's3', examId: 'sqld', type: 'cancel_end',     date: '2026-07-18', label: 'SQLD 취소 가능 마감' },
-  { id: 's4', examId: 'sqld', type: 'exam',           date: '2026-08-08', label: 'SQLD 시험일' },
-  { id: 's5', examId: 'sqld', type: 'result',         date: '2026-09-05', label: 'SQLD 합격 발표' },
-  { id: 's6', examId: 'sqld', type: 'next_exam',      date: '2026-11-14', label: 'SQLD 다음 시험 (예정)' },
+  // ── ADSP 데이터분석 준전문가 ──
+  // 제49회 합격 발표 (과거 회차 결과)
+  { id: 'adsp-49-r',  examId: 'adsp', type: 'result',         date: '2026-06-05', label: 'ADSP 제49회 합격 발표' },
+  // 제50회 (접수 7.6~10 / 시험 8.8 / 합발 8.28)
+  { id: 'adsp-50-rs', examId: 'adsp', type: 'register_start', date: '2026-07-06', label: 'ADSP 제50회 접수 시작' },
+  { id: 'adsp-50-re', examId: 'adsp', type: 'register_end',   date: '2026-07-10', label: 'ADSP 제50회 접수 마감' },
+  { id: 'adsp-50-ex', examId: 'adsp', type: 'exam',           date: '2026-08-08', label: 'ADSP 제50회 시험일' },
+  { id: 'adsp-50-r',  examId: 'adsp', type: 'result',         date: '2026-08-28', label: 'ADSP 제50회 합격 발표' },
+  { id: 'adsp-50-nx', examId: 'adsp', type: 'next_exam',      date: '2026-10-31', label: 'ADSP 제51회 시험 예정' },
+  // 제51회 (접수 9.28~10.2 / 시험 10.31 / 합발 11.20)
+  { id: 'adsp-51-rs', examId: 'adsp', type: 'register_start', date: '2026-09-28', label: 'ADSP 제51회 접수 시작' },
+  { id: 'adsp-51-re', examId: 'adsp', type: 'register_end',   date: '2026-10-02', label: 'ADSP 제51회 접수 마감' },
+  { id: 'adsp-51-ex', examId: 'adsp', type: 'exam',           date: '2026-10-31', label: 'ADSP 제51회 시험일' },
+  { id: 'adsp-51-r',  examId: 'adsp', type: 'result',         date: '2026-11-20', label: 'ADSP 제51회 합격 발표' },
 
-  // ADSP
-  { id: 'a1', examId: 'adsp', type: 'register_start', date: '2026-07-14', label: 'ADSP 접수 시작' },
-  { id: 'a2', examId: 'adsp', type: 'register_end',   date: '2026-08-01', label: 'ADSP 접수 마감' },
-  { id: 'a3', examId: 'adsp', type: 'cancel_end',     date: '2026-08-08', label: 'ADSP 취소 가능 마감' },
-  { id: 'a4', examId: 'adsp', type: 'exam',           date: '2026-09-05', label: 'ADSP 시험일' },
-  { id: 'a5', examId: 'adsp', type: 'result',         date: '2026-10-10', label: 'ADSP 합격 발표' },
+  // ── ADP 데이터분석 전문가 ──
+  // 제37회 필기 (접수 7.6~10 / 시험 8.8 / 합발 9.4)
+  { id: 'adp-37f-rs', examId: 'adp', type: 'register_start', date: '2026-07-06', label: 'ADP 제37회 필기 접수 시작' },
+  { id: 'adp-37f-re', examId: 'adp', type: 'register_end',   date: '2026-07-10', label: 'ADP 제37회 필기 접수 마감' },
+  { id: 'adp-37f-ex', examId: 'adp', type: 'exam',           date: '2026-08-08', label: 'ADP 제37회 필기 시험일' },
+  { id: 'adp-37f-r',  examId: 'adp', type: 'result',         date: '2026-09-04', label: 'ADP 제37회 필기 합격 발표' },
+  { id: 'adp-37f-nx', examId: 'adp', type: 'next_exam',      date: '2026-10-17', label: 'ADP 제37회 실기 시험 예정' },
+  // 제37회 실기 (접수 9.14~18 / 시험 10.17 / 합발 11.13)
+  { id: 'adp-37p-rs', examId: 'adp', type: 'register_start', date: '2026-09-14', label: 'ADP 제37회 실기 접수 시작' },
+  { id: 'adp-37p-re', examId: 'adp', type: 'register_end',   date: '2026-09-18', label: 'ADP 제37회 실기 접수 마감' },
+  { id: 'adp-37p-ex', examId: 'adp', type: 'exam',           date: '2026-10-17', label: 'ADP 제37회 실기 시험일' },
+  { id: 'adp-37p-r',  examId: 'adp', type: 'result',         date: '2026-11-13', label: 'ADP 제37회 실기 합격 발표' },
 
-  // 한국사
+  // ── SQLD SQL 개발자 ──
+  // 제61회 합격 발표 (시험은 5.31 완료, 결과만 미발표)
+  { id: 'sqld-61-r',  examId: 'sqld', type: 'result',         date: '2026-06-19', label: 'SQLD 제61회 합격 발표' },
+  // 제62회 (접수 7.20~24 / 시험 8.22 / 합발 9.11)
+  { id: 'sqld-62-rs', examId: 'sqld', type: 'register_start', date: '2026-07-20', label: 'SQLD 제62회 접수 시작' },
+  { id: 'sqld-62-re', examId: 'sqld', type: 'register_end',   date: '2026-07-24', label: 'SQLD 제62회 접수 마감' },
+  { id: 'sqld-62-ex', examId: 'sqld', type: 'exam',           date: '2026-08-22', label: 'SQLD 제62회 시험일' },
+  { id: 'sqld-62-r',  examId: 'sqld', type: 'result',         date: '2026-09-11', label: 'SQLD 제62회 합격 발표' },
+  { id: 'sqld-62-nx', examId: 'sqld', type: 'next_exam',      date: '2026-11-14', label: 'SQLD 제63회 시험 예정' },
+  // 제63회 (접수 10.12~16 / 시험 11.14 / 합발 12.4)
+  { id: 'sqld-63-rs', examId: 'sqld', type: 'register_start', date: '2026-10-12', label: 'SQLD 제63회 접수 시작' },
+  { id: 'sqld-63-re', examId: 'sqld', type: 'register_end',   date: '2026-10-16', label: 'SQLD 제63회 접수 마감' },
+  { id: 'sqld-63-ex', examId: 'sqld', type: 'exam',           date: '2026-11-14', label: 'SQLD 제63회 시험일' },
+  { id: 'sqld-63-r',  examId: 'sqld', type: 'result',         date: '2026-12-04', label: 'SQLD 제63회 합격 발표' },
+
+  // ── SQLP SQL 전문가 ──
+  // 제55회 (접수 7.20~24 / 시험 8.22 / 합발 9.18)
+  { id: 'sqlp-55-rs', examId: 'sqlp', type: 'register_start', date: '2026-07-20', label: 'SQLP 제55회 접수 시작' },
+  { id: 'sqlp-55-re', examId: 'sqlp', type: 'register_end',   date: '2026-07-24', label: 'SQLP 제55회 접수 마감' },
+  { id: 'sqlp-55-ex', examId: 'sqlp', type: 'exam',           date: '2026-08-22', label: 'SQLP 제55회 시험일' },
+  { id: 'sqlp-55-r',  examId: 'sqlp', type: 'result',         date: '2026-09-18', label: 'SQLP 제55회 합격 발표' },
+
+  // ── 한국사능력검정시험 ──
   { id: 'h1', examId: 'history', type: 'register_start', date: '2026-07-01', label: '한국사 접수 시작' },
   { id: 'h2', examId: 'history', type: 'register_end',   date: '2026-07-10', label: '한국사 접수 마감' },
   { id: 'h3', examId: 'history', type: 'exam',           date: '2026-08-01', label: '한국사 시험일' },
 
-  // TOEIC
+  // ── TOEIC ──
   { id: 't1', examId: 'toeic', type: 'register_start', date: '2026-06-20', label: 'TOEIC 접수 시작' },
   { id: 't2', examId: 'toeic', type: 'register_end',   date: '2026-06-27', label: 'TOEIC 접수 마감' },
   { id: 't3', examId: 'toeic', type: 'exam',           date: '2026-07-19', label: 'TOEIC 시험일' },
