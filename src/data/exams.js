@@ -1,7 +1,7 @@
 export const CATEGORIES = [
-  { id: 'finance', label: '금융', color: '#1E3A8A', bg: '#EFF6FF' },
-  { id: 'public', label: '공공', color: '#B91C1C', bg: '#FEF2F2' },
-  { id: 'language', label: '언어', color: '#0E7490', bg: '#ECFEFF' },
+  { id: 'finance', label: '금융', color: '#6068E8', bg: '#EFEDFF' },
+  { id: 'public', label: '공공', color: '#9B5ED8', bg: '#F5EEFF' },
+  { id: 'language', label: '언어', color: '#C060C8', bg: '#FDF0FF' },
 ];
 
 export const EXAMS = [
@@ -16,7 +16,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: 40,
     passRate: '40~50%',
-    color: '#1E3A8A',
+    color: '#6068E8',
     subjects: ['데이터 이해', '데이터 분석 기획', '데이터 분석', '데이터 시각화'],
   },
   {
@@ -29,7 +29,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: 40,
     passRate: '10~15%',
-    color: '#1E3A8A',
+    color: '#6068E8',
     subjects: ['데이터 이해', '데이터 분석 기획', '데이터 분석', '데이터 시각화', '빅데이터 분석 실무'],
   },
   {
@@ -42,7 +42,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: 40,
     passRate: '50~60%',
-    color: '#1D4ED8',
+    color: '#7875E8',
     subjects: ['데이터 모델링의 이해', 'SQL 기본 및 활용'],
   },
   {
@@ -55,7 +55,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: 40,
     passRate: '15~25%',
-    color: '#1D4ED8',
+    color: '#7875E8',
     subjects: ['데이터 모델링의 이해', 'SQL 기본 및 활용', 'SQL 고급 활용 및 튜닝'],
   },
   {
@@ -68,7 +68,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: 40,
     passRate: '20~30%',
-    color: '#7C3AED',
+    color: '#9B5ED8',
     subjects: ['재무분석', '신용조사 및 평가', '여신심사 및 관리'],
   },
   {
@@ -81,7 +81,7 @@ export const EXAMS = [
     passScore: 70,
     failScore: 40,
     passRate: '30~40%',
-    color: '#0E7490',
+    color: '#A87FD8',
     subjects: ['펀드투자', '투자운용 및 전략', '법규 및 세제'],
   },
   // 공공
@@ -95,7 +95,7 @@ export const EXAMS = [
     passScore: 80,
     failScore: null,
     passRate: '약 25%',
-    color: '#B91C1C',
+    color: '#9B5ED8',
     subjects: ['전근대사', '근현대사'],
   },
   {
@@ -108,7 +108,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: null,
     passRate: '—',
-    color: '#DC2626',
+    color: '#B06AD8',
     subjects: ['어휘·문법', '쓰기', '읽기', '듣기'],
   },
   {
@@ -121,7 +121,7 @@ export const EXAMS = [
     passScore: 60,
     failScore: null,
     passRate: '—',
-    color: '#EA580C',
+    color: '#C060C8',
     subjects: ['의사소통능력', '수리능력', '문제해결능력', '정보능력'],
   },
   {
@@ -134,7 +134,7 @@ export const EXAMS = [
     passScore: 70,
     failScore: 40,
     passRate: '20~30%',
-    color: '#C2410C',
+    color: '#D070D8',
     subjects: ['컴퓨터 일반', '스프레드시트 일반', '데이터베이스 일반'],
   },
   // 언어
@@ -148,7 +148,7 @@ export const EXAMS = [
     passScore: null,
     failScore: null,
     passRate: 'AL 약 5%',
-    color: '#0E7490',
+    color: '#A87FD8',
     subjects: ['Personal Background', 'Roleplays', 'Surprise Questions'],
   },
   {
@@ -161,7 +161,7 @@ export const EXAMS = [
     passScore: null,
     failScore: null,
     passRate: '점수제 (990점 만점)',
-    color: '#0891B2',
+    color: '#C878D8',
     subjects: ['Listening Comprehension', 'Reading Comprehension'],
   },
   {
@@ -174,7 +174,7 @@ export const EXAMS = [
     passScore: null,
     failScore: null,
     passRate: '점수제 (200점 만점)',
-    color: '#06B6D4',
+    color: '#D490E0',
     subjects: ['Read a Text Aloud', 'Describe a Picture', 'Respond to Questions', 'Express an Opinion'],
   },
 ];
@@ -208,12 +208,12 @@ export const EXAM_SCHEDULE = [
 ];
 
 export const SCHEDULE_TYPE_COLORS = {
-  register_start: '#16A34A',
-  register_end:   '#D97706',
-  cancel_end:     '#EF4444',
-  exam:           '#1E3A8A',
-  result:         '#7C3AED',
-  next_exam:      '#94A3B8',
+  register_start: '#48C89A',
+  register_end:   '#F0C060',
+  cancel_end:     '#EF6B8A',
+  exam:           '#7875E8',
+  result:         '#A87FD8',
+  next_exam:      '#C8B8E8',
 };
 
 export const SCHEDULE_TYPE_LABELS = {
