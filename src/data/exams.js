@@ -242,6 +242,37 @@ export const EXAM_SCHEDULE = [
   { id: 'sqld-63-ex', examId: 'sqld', type: 'exam',           date: '2026-11-14', label: 'SQLD 제63회 시험일' },
   { id: 'sqld-63-r',  examId: 'sqld', type: 'result',         date: '2026-12-04', label: 'SQLD 제63회 합격 발표' },
 
+  // ── 재경관리사 ──
+  // 125회 (접수 5.26~6.2 마감 / 시험 6.20 / 합발 6.26)
+  { id: 'fm-125-rs', examId: 'financial-manager', type: 'register_start', date: '2026-05-26', label: '재경관리사 125회 접수 시작' },
+  { id: 'fm-125-re', examId: 'financial-manager', type: 'register_end',   date: '2026-06-02', label: '재경관리사 125회 접수 마감' },
+  { id: 'fm-125-ex', examId: 'financial-manager', type: 'exam',           date: '2026-06-20', label: '재경관리사 125회 시험일' },
+  { id: 'fm-125-r',  examId: 'financial-manager', type: 'result',         date: '2026-06-26', label: '재경관리사 125회 합격 발표' },
+  { id: 'fm-125-nx', examId: 'financial-manager', type: 'next_exam',      date: '2026-07-25', label: '재경관리사 126회 시험 예정' },
+  // 126회 (접수 6.30~7.7 / 시험 7.25 / 합발 7.31)
+  { id: 'fm-126-rs', examId: 'financial-manager', type: 'register_start', date: '2026-06-30', label: '재경관리사 126회 접수 시작' },
+  { id: 'fm-126-re', examId: 'financial-manager', type: 'register_end',   date: '2026-07-07', label: '재경관리사 126회 접수 마감' },
+  { id: 'fm-126-ex', examId: 'financial-manager', type: 'exam',           date: '2026-07-25', label: '재경관리사 126회 시험일' },
+  { id: 'fm-126-r',  examId: 'financial-manager', type: 'result',         date: '2026-07-31', label: '재경관리사 126회 합격 발표' },
+  { id: 'fm-126-nx', examId: 'financial-manager', type: 'next_exam',      date: '2026-09-19', label: '재경관리사 127회 시험 예정' },
+  // 127회 (접수 8.20~8.27 / 시험 9.19 / 합발 9.29)
+  { id: 'fm-127-rs', examId: 'financial-manager', type: 'register_start', date: '2026-08-20', label: '재경관리사 127회 접수 시작' },
+  { id: 'fm-127-re', examId: 'financial-manager', type: 'register_end',   date: '2026-08-27', label: '재경관리사 127회 접수 마감' },
+  { id: 'fm-127-ex', examId: 'financial-manager', type: 'exam',           date: '2026-09-19', label: '재경관리사 127회 시험일' },
+  { id: 'fm-127-r',  examId: 'financial-manager', type: 'result',         date: '2026-09-29', label: '재경관리사 127회 합격 발표' },
+  { id: 'fm-127-nx', examId: 'financial-manager', type: 'next_exam',      date: '2026-11-14', label: '재경관리사 128회 시험 예정' },
+  // 128회 (접수 10.15~10.22 / 시험 11.14 / 합발 11.20)
+  { id: 'fm-128-rs', examId: 'financial-manager', type: 'register_start', date: '2026-10-15', label: '재경관리사 128회 접수 시작' },
+  { id: 'fm-128-re', examId: 'financial-manager', type: 'register_end',   date: '2026-10-22', label: '재경관리사 128회 접수 마감' },
+  { id: 'fm-128-ex', examId: 'financial-manager', type: 'exam',           date: '2026-11-14', label: '재경관리사 128회 시험일' },
+  { id: 'fm-128-r',  examId: 'financial-manager', type: 'result',         date: '2026-11-20', label: '재경관리사 128회 합격 발표' },
+  { id: 'fm-128-nx', examId: 'financial-manager', type: 'next_exam',      date: '2026-12-19', label: '재경관리사 129회 시험 예정' },
+  // 129회 (접수 11.24~12.1 / 시험 12.19 / 합발 12.24)
+  { id: 'fm-129-rs', examId: 'financial-manager', type: 'register_start', date: '2026-11-24', label: '재경관리사 129회 접수 시작' },
+  { id: 'fm-129-re', examId: 'financial-manager', type: 'register_end',   date: '2026-12-01', label: '재경관리사 129회 접수 마감' },
+  { id: 'fm-129-ex', examId: 'financial-manager', type: 'exam',           date: '2026-12-19', label: '재경관리사 129회 시험일' },
+  { id: 'fm-129-r',  examId: 'financial-manager', type: 'result',         date: '2026-12-24', label: '재경관리사 129회 합격 발표' },
+
   // ── 외환전문역 I종 ──
   // 56회 (접수 6.2~6.9 마감 / 시험 7.11 / 합발 7.24)
   { id: 'fx1-56-rs', examId: 'forex-1', type: 'register_start', date: '2026-06-02', label: '외환전문역 I종 56회 접수 시작' },
