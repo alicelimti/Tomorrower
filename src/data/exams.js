@@ -20,19 +20,6 @@ export const EXAMS = [
     subjects: ['데이터 이해', '데이터 분석 기획', '데이터 분석', '데이터 시각화'],
   },
   {
-    id: 'adp',
-    category: 'finance',
-    name: 'ADP',
-    fullName: '데이터분석 전문가',
-    org: '한국데이터산업진흥원',
-    orgUrl: 'https://www.dataq.or.kr',
-    passScore: 60,
-    failScore: 40,
-    passRate: '10~15%',
-    color: '#6068E8',
-    subjects: ['데이터 이해', '데이터 분석 기획', '데이터 분석', '데이터 시각화', '빅데이터 분석 실무'],
-  },
-  {
     id: 'sqld',
     category: 'finance',
     name: 'SQLD',
@@ -44,19 +31,6 @@ export const EXAMS = [
     passRate: '50~60%',
     color: '#7875E8',
     subjects: ['데이터 모델링의 이해', 'SQL 기본 및 활용'],
-  },
-  {
-    id: 'sqlp',
-    category: 'finance',
-    name: 'SQLP',
-    fullName: 'SQL 전문가',
-    org: '한국데이터산업진흥원',
-    orgUrl: 'https://www.dataq.or.kr',
-    passScore: 60,
-    failScore: 40,
-    passRate: '15~25%',
-    color: '#7875E8',
-    subjects: ['데이터 모델링의 이해', 'SQL 기본 및 활용', 'SQL 고급 활용 및 튜닝'],
   },
   {
     id: 'credit-analyst',
@@ -196,19 +170,6 @@ export const EXAM_SCHEDULE = [
   { id: 'adsp-51-ex', examId: 'adsp', type: 'exam',           date: '2026-10-31', label: 'ADSP 제51회 시험일' },
   { id: 'adsp-51-r',  examId: 'adsp', type: 'result',         date: '2026-11-20', label: 'ADSP 제51회 합격 발표' },
 
-  // ── ADP 데이터분석 전문가 ──
-  // 제37회 필기 (접수 7.6~10 / 시험 8.8 / 합발 9.4)
-  { id: 'adp-37f-rs', examId: 'adp', type: 'register_start', date: '2026-07-06', label: 'ADP 제37회 필기 접수 시작' },
-  { id: 'adp-37f-re', examId: 'adp', type: 'register_end',   date: '2026-07-10', label: 'ADP 제37회 필기 접수 마감' },
-  { id: 'adp-37f-ex', examId: 'adp', type: 'exam',           date: '2026-08-08', label: 'ADP 제37회 필기 시험일' },
-  { id: 'adp-37f-r',  examId: 'adp', type: 'result',         date: '2026-09-04', label: 'ADP 제37회 필기 합격 발표' },
-  { id: 'adp-37f-nx', examId: 'adp', type: 'next_exam',      date: '2026-10-17', label: 'ADP 제37회 실기 시험 예정' },
-  // 제37회 실기 (접수 9.14~18 / 시험 10.17 / 합발 11.13)
-  { id: 'adp-37p-rs', examId: 'adp', type: 'register_start', date: '2026-09-14', label: 'ADP 제37회 실기 접수 시작' },
-  { id: 'adp-37p-re', examId: 'adp', type: 'register_end',   date: '2026-09-18', label: 'ADP 제37회 실기 접수 마감' },
-  { id: 'adp-37p-ex', examId: 'adp', type: 'exam',           date: '2026-10-17', label: 'ADP 제37회 실기 시험일' },
-  { id: 'adp-37p-r',  examId: 'adp', type: 'result',         date: '2026-11-13', label: 'ADP 제37회 실기 합격 발표' },
-
   // ── SQLD SQL 개발자 ──
   // 제61회 합격 발표 (시험은 5.31 완료, 결과만 미발표)
   { id: 'sqld-61-r',  examId: 'sqld', type: 'result',         date: '2026-06-19', label: 'SQLD 제61회 합격 발표' },
@@ -223,13 +184,6 @@ export const EXAM_SCHEDULE = [
   { id: 'sqld-63-re', examId: 'sqld', type: 'register_end',   date: '2026-10-16', label: 'SQLD 제63회 접수 마감' },
   { id: 'sqld-63-ex', examId: 'sqld', type: 'exam',           date: '2026-11-14', label: 'SQLD 제63회 시험일' },
   { id: 'sqld-63-r',  examId: 'sqld', type: 'result',         date: '2026-12-04', label: 'SQLD 제63회 합격 발표' },
-
-  // ── SQLP SQL 전문가 ──
-  // 제55회 (접수 7.20~24 / 시험 8.22 / 합발 9.18)
-  { id: 'sqlp-55-rs', examId: 'sqlp', type: 'register_start', date: '2026-07-20', label: 'SQLP 제55회 접수 시작' },
-  { id: 'sqlp-55-re', examId: 'sqlp', type: 'register_end',   date: '2026-07-24', label: 'SQLP 제55회 접수 마감' },
-  { id: 'sqlp-55-ex', examId: 'sqlp', type: 'exam',           date: '2026-08-22', label: 'SQLP 제55회 시험일' },
-  { id: 'sqlp-55-r',  examId: 'sqlp', type: 'result',         date: '2026-09-18', label: 'SQLP 제55회 합격 발표' },
 
   // ── 한국사능력검정시험 ──
   { id: 'h1', examId: 'history', type: 'register_start', date: '2026-07-01', label: '한국사 접수 시작' },
