@@ -7,7 +7,7 @@ import Quiz from './pages/Quiz';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Tomorrower">
       <Routes>
         <Route path="/" element={<><Home /><BottomNav /></>} />
         <Route path="/schedule" element={<><Schedule /><BottomNav /></>} />

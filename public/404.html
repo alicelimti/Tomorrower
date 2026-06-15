@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tomorrower</title>
+  <script>
+    // GitHub Pages는 SPA 라우팅을 지원하지 않으므로,
+    // 직접 URL 접근 시 현재 경로를 sessionStorage에 저장하고 루트로 리다이렉트.
+    sessionStorage.setItem('spa-redirect', window.location.pathname + window.location.search + window.location.hash);
+    window.location.replace('/Tomorrower/');
+  </script>
+</head>
+<body></body>
+</html>
