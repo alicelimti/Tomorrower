@@ -1,15 +1,16 @@
 export const CATEGORIES = [
-  { id: 'finance', label: '금융', color: '#6068E8', bg: '#EFEDFF' },
-  { id: 'public', label: '공공', color: '#9B5ED8', bg: '#F5EEFF' },
-  { id: 'language', label: '언어', color: '#C060C8', bg: '#FDF0FF' },
+  { id: 'it-data',  label: 'IT·Data',  color: '#6068E8', bg: '#EFEDFF' },
+  { id: 'finance',  label: '금융·회계', color: '#9B5ED8', bg: '#F5EEFF' },
+  { id: 'public',   label: '공공',      color: '#B06AD8', bg: '#F8EEFF' },
+  { id: 'language', label: '언어',      color: '#C060C8', bg: '#FDF0FF' },
 ];
 
 export const EXAMS = [
-  // 금융
+  // ── A. 데이터 및 IT 역량 (IT·Data) ──
   {
     id: 'adsp',
-    category: 'finance',
-    name: 'ADSP',
+    category: 'it-data',
+    name: 'ADsP',
     fullName: '데이터분석 준전문가',
     org: '한국데이터산업진흥원',
     orgUrl: 'https://www.dataq.or.kr',
@@ -21,7 +22,7 @@ export const EXAMS = [
   },
   {
     id: 'sqld',
-    category: 'finance',
+    category: 'it-data',
     name: 'SQLD',
     fullName: 'SQL 개발자',
     org: '한국데이터산업진흥원',
@@ -33,12 +34,26 @@ export const EXAMS = [
     subjects: ['데이터 모델링의 이해', 'SQL 기본 및 활용'],
   },
   {
+    id: 'computer',
+    category: 'it-data',
+    name: '컴활 1급',
+    fullName: '컴퓨터활용능력 1급',
+    org: '대한상공회의소',
+    orgUrl: 'https://license.korcham.net',
+    passScore: 70,
+    failScore: 40,
+    passRate: '20~30%',
+    color: '#8068E8',
+    subjects: ['컴퓨터 일반', '스프레드시트 일반', '데이터베이스 일반'],
+  },
+  // ── B. 회계·재무 및 금융 실무 (Finance/Accounting) ──
+  {
     id: 'credit-analyst',
     category: 'finance',
     name: '신용분석사',
     fullName: '신용분석사',
     org: '한국금융연수원',
-    orgUrl: 'https://www.kbiz.or.kr',
+    orgUrl: 'https://www.kbi.or.kr',
     passScore: 60,
     failScore: 40,
     passRate: '20~30%',
@@ -48,8 +63,8 @@ export const EXAMS = [
   {
     id: 'investment-manager',
     category: 'finance',
-    name: '투자운용사',
-    fullName: '투자운용사',
+    name: '투자자산운용사',
+    fullName: '투자자산운용사',
     org: '한국금융투자협회',
     orgUrl: 'https://www.kofia.or.kr',
     passScore: 70,
@@ -58,7 +73,46 @@ export const EXAMS = [
     color: '#A87FD8',
     subjects: ['펀드투자', '투자운용 및 전략', '법규 및 세제'],
   },
-  // 공공
+  {
+    id: 'forex',
+    category: 'finance',
+    name: '외환전문역',
+    fullName: '외환전문역 (1종)',
+    org: '한국금융연수원',
+    orgUrl: 'https://www.kbi.or.kr',
+    passScore: 60,
+    failScore: 40,
+    passRate: '20~30%',
+    color: '#B068D8',
+    subjects: ['외환 관련 법규', '외국환 거래 실무', '무역 결제 실무'],
+  },
+  {
+    id: 'computer-accounting',
+    category: 'finance',
+    name: '전산회계',
+    fullName: '전산회계 1급',
+    org: '한국세무사회',
+    orgUrl: 'https://www.kacpta.or.kr',
+    passScore: 70,
+    failScore: null,
+    passRate: '40~55%',
+    color: '#A060D0',
+    subjects: ['재무회계', '원가회계', '세무회계', '회계 정보 처리'],
+  },
+  {
+    id: 'financial-manager',
+    category: 'finance',
+    name: '재경관리사',
+    fullName: '재경관리사',
+    org: '삼일인재원',
+    orgUrl: 'https://www.samilexam.com',
+    passScore: 70,
+    failScore: 40,
+    passRate: '15~25%',
+    color: '#9858C8',
+    subjects: ['재무회계', '세무회계', '원가관리회계'],
+  },
+  // ── 공공 ──
   {
     id: 'history',
     category: 'public',
@@ -97,19 +151,6 @@ export const EXAMS = [
     passRate: '—',
     color: '#C060C8',
     subjects: ['의사소통능력', '수리능력', '문제해결능력', '정보능력'],
-  },
-  {
-    id: 'computer',
-    category: 'public',
-    name: '컴활 1급',
-    fullName: '컴퓨터활용능력 1급',
-    org: '대한상공회의소',
-    orgUrl: 'https://license.korcham.net',
-    passScore: 70,
-    failScore: 40,
-    passRate: '20~30%',
-    color: '#D070D8',
-    subjects: ['컴퓨터 일반', '스프레드시트 일반', '데이터베이스 일반'],
   },
   // 언어
   {

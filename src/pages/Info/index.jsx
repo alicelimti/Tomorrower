@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { EXAMS, CATEGORIES } from '../../data/exams';
 
 export default function Info() {
-  const [catFilter, setCatFilter] = useState('finance');
+  const [catFilter, setCatFilter] = useState('it-data');
   const [selected, setSelected] = useState('adsp');
 
   const filteredExams = EXAMS.filter((e) => e.category === catFilter);
