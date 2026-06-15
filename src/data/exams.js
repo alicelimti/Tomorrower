@@ -35,8 +35,8 @@ export const EXAMS = [
   {
     id: 'computer',
     category: 'it-data',
-    name: '컴활 1급',
-    fullName: '컴퓨터활용능력 1급',
+    name: '컴퓨터활용능력1,2급',
+    fullName: '컴퓨터활용능력 1·2급',
     org: '대한상공회의소',
     orgUrl: 'https://license.korcham.net',
     passScore: 70,
