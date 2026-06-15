@@ -68,6 +68,11 @@ export default function Home() {
   const [catFilter, setCatFilter] = useState('all');
   const openRegs = getOpenRegistrations(catFilter);
   const nextOpen = getNextRegisterOpen(catFilter);
+  const ongoingExams = EXAMS.filter((e) => {
+    if (!e.ongoing) return false;
+    if (catFilter === 'all') return true;
+    return e.category === catFilter;
+  });
   const today = new Date();
   const dateLabel = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
 
@@ -174,6 +179,29 @@ export default function Home() {
                 );
               })
             )}
+            {/* 상시시험 */}
+            {ongoingExams.map((exam) => {
+              const cat = CATEGORIES.find((c) => c.id === exam.category);
+              return (
+                <Link key={exam.id} to={`/info?exam=${exam.id}`} style={{ textDecoration: 'none' }}>
+                  <div style={{ background: 'white', borderRadius: 12, padding: '12px 14px', border: '1px solid #EDE8FF' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                          <div style={{ width: 6, height: 6, borderRadius: 3, background: exam.color }} />
+                          <span style={{ fontSize: 14, fontWeight: 700, color: '#2D1F5E' }}>{exam.name}</span>
+                          <span style={{ fontSize: 10, color: 'white', background: cat?.color, padding: '1px 6px', borderRadius: 8 }}>{cat?.label}</span>
+                        </div>
+                        <div style={{ fontSize: 11, color: '#9B88CC' }}>언제든지 접수 가능 · 상시시험</div>
+                      </div>
+                      <div style={{ background: '#48C89A', color: 'white', borderRadius: 20, padding: '4px 10px', fontSize: 11, fontWeight: 700, whiteSpace: 'nowrap' }}>
+                        상시
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
 

@@ -51,7 +51,12 @@ export default function Info() {
           <>
             {/* 시험 타이틀 */}
             <div style={{ background: exam.color, borderRadius: 16, padding: '18px 20px', marginBottom: 14, color: 'white' }}>
-              <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 3 }}>{exam.name}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                <div style={{ fontSize: 22, fontWeight: 800 }}>{exam.name}</div>
+                {exam.ongoing && (
+                  <span style={{ background: 'rgba(255,255,255,0.25)', fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 10 }}>상시</span>
+                )}
+              </div>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginBottom: 10 }}>{exam.fullName}</div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)' }}>주관: {exam.org}</div>
             </div>
