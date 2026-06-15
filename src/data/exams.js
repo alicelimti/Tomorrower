@@ -75,17 +75,32 @@ export const EXAMS = [
     subjects: ['펀드투자', '투자운용 및 전략', '법규 및 세제'],
   },
   {
-    id: 'forex',
+    id: 'forex-1',
     category: 'finance',
-    name: '외환전문역',
-    fullName: '외환전문역 (1종)',
+    name: '외환전문역 I종',
+    fullName: '외환전문역 I종 (국가공인자격)',
     org: '한국금융연수원',
     orgUrl: 'https://www.kbi.or.kr',
     passScore: 60,
     failScore: 40,
-    passRate: '20~30%',
+    passRate: '30~40%',
+    fee: '55,000원',
     color: '#B068D8',
-    subjects: ['외환 관련 법규', '외국환 거래 실무', '무역 결제 실무'],
+    subjects: ['외환 관련 법규 및 제도', '외국환 거래 실무', '수출입 결제 실무'],
+  },
+  {
+    id: 'forex-2',
+    category: 'finance',
+    name: '외환전문역 II종',
+    fullName: '외환전문역 II종 (국가공인자격)',
+    org: '한국금융연수원',
+    orgUrl: 'https://www.kbi.or.kr',
+    passScore: 60,
+    failScore: 40,
+    passRate: '35~45%',
+    fee: '55,000원',
+    color: '#B878DC',
+    subjects: ['외환 관련 법규 및 제도', '수출입 결제 실무', '무역금융 실무'],
   },
   {
     id: 'computer-accounting',
@@ -226,6 +241,30 @@ export const EXAM_SCHEDULE = [
   { id: 'sqld-63-re', examId: 'sqld', type: 'register_end',   date: '2026-10-16', label: 'SQLD 제63회 접수 마감' },
   { id: 'sqld-63-ex', examId: 'sqld', type: 'exam',           date: '2026-11-14', label: 'SQLD 제63회 시험일' },
   { id: 'sqld-63-r',  examId: 'sqld', type: 'result',         date: '2026-12-04', label: 'SQLD 제63회 합격 발표' },
+
+  // ── 외환전문역 I종 ──
+  // 56회 (접수 6.2~6.9 마감 / 시험 7.11 / 합발 7.24)
+  { id: 'fx1-56-rs', examId: 'forex-1', type: 'register_start', date: '2026-06-02', label: '외환전문역 I종 56회 접수 시작' },
+  { id: 'fx1-56-re', examId: 'forex-1', type: 'register_end',   date: '2026-06-09', label: '외환전문역 I종 56회 접수 마감' },
+  { id: 'fx1-56-ex', examId: 'forex-1', type: 'exam',           date: '2026-07-11', label: '외환전문역 I종 56회 시험일' },
+  { id: 'fx1-56-r',  examId: 'forex-1', type: 'result',         date: '2026-07-24', label: '외환전문역 I종 56회 합격 발표' },
+  { id: 'fx1-56-nx', examId: 'forex-1', type: 'next_exam',      date: '2026-11-21', label: '외환전문역 I종 57회 시험 예정' },
+  // 57회 (접수 10.13~10.20 / 시험 11.21 / 합발 12.4)
+  { id: 'fx1-57-rs', examId: 'forex-1', type: 'register_start', date: '2026-10-13', label: '외환전문역 I종 57회 접수 시작' },
+  { id: 'fx1-57-re', examId: 'forex-1', type: 'register_end',   date: '2026-10-20', label: '외환전문역 I종 57회 접수 마감' },
+  { id: 'fx1-57-ex', examId: 'forex-1', type: 'exam',           date: '2026-11-21', label: '외환전문역 I종 57회 시험일' },
+  { id: 'fx1-57-r',  examId: 'forex-1', type: 'result',         date: '2026-12-04', label: '외환전문역 I종 57회 합격 발표' },
+
+  // ── 외환전문역 II종 (I종과 동일 일정) ──
+  { id: 'fx2-56-rs', examId: 'forex-2', type: 'register_start', date: '2026-06-02', label: '외환전문역 II종 56회 접수 시작' },
+  { id: 'fx2-56-re', examId: 'forex-2', type: 'register_end',   date: '2026-06-09', label: '외환전문역 II종 56회 접수 마감' },
+  { id: 'fx2-56-ex', examId: 'forex-2', type: 'exam',           date: '2026-07-11', label: '외환전문역 II종 56회 시험일' },
+  { id: 'fx2-56-r',  examId: 'forex-2', type: 'result',         date: '2026-07-24', label: '외환전문역 II종 56회 합격 발표' },
+  { id: 'fx2-56-nx', examId: 'forex-2', type: 'next_exam',      date: '2026-11-21', label: '외환전문역 II종 57회 시험 예정' },
+  { id: 'fx2-57-rs', examId: 'forex-2', type: 'register_start', date: '2026-10-13', label: '외환전문역 II종 57회 접수 시작' },
+  { id: 'fx2-57-re', examId: 'forex-2', type: 'register_end',   date: '2026-10-20', label: '외환전문역 II종 57회 접수 마감' },
+  { id: 'fx2-57-ex', examId: 'forex-2', type: 'exam',           date: '2026-11-21', label: '외환전문역 II종 57회 시험일' },
+  { id: 'fx2-57-r',  examId: 'forex-2', type: 'result',         date: '2026-12-04', label: '외환전문역 II종 57회 합격 발표' },
 
   // ── 신용분석사 (CCA) ──
   // 제66회 (접수 9.22~9.29 / 시험 10.31 / 합발 11.13)
