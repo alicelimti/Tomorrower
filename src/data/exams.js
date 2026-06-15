@@ -51,12 +51,13 @@ export const EXAMS = [
     id: 'credit-analyst',
     category: 'finance',
     name: '신용분석사',
-    fullName: '신용분석사',
+    fullName: '신용분석사 (CCA)',
     org: '한국금융연수원',
     orgUrl: 'https://www.kbi.or.kr',
     passScore: 60,
     failScore: 40,
     passRate: '20~30%',
+    fee: '66,000원 (1부 28,000원 / 2부 39,000원)',
     color: '#9B5ED8',
     subjects: ['재무분석', '신용조사 및 평가', '여신심사 및 관리'],
   },
@@ -225,6 +226,13 @@ export const EXAM_SCHEDULE = [
   { id: 'sqld-63-re', examId: 'sqld', type: 'register_end',   date: '2026-10-16', label: 'SQLD 제63회 접수 마감' },
   { id: 'sqld-63-ex', examId: 'sqld', type: 'exam',           date: '2026-11-14', label: 'SQLD 제63회 시험일' },
   { id: 'sqld-63-r',  examId: 'sqld', type: 'result',         date: '2026-12-04', label: 'SQLD 제63회 합격 발표' },
+
+  // ── 신용분석사 (CCA) ──
+  // 제66회 (접수 9.22~9.29 / 시험 10.31 / 합발 11.13)
+  { id: 'cca-66-rs', examId: 'credit-analyst', type: 'register_start', date: '2026-09-22', label: '신용분석사 제66회 접수 시작' },
+  { id: 'cca-66-re', examId: 'credit-analyst', type: 'register_end',   date: '2026-09-29', label: '신용분석사 제66회 접수 마감' },
+  { id: 'cca-66-ex', examId: 'credit-analyst', type: 'exam',           date: '2026-10-31', label: '신용분석사 제66회 시험일' },
+  { id: 'cca-66-r',  examId: 'credit-analyst', type: 'result',         date: '2026-11-13', label: '신용분석사 제66회 합격 발표' },
 
   // ── 한국사능력검정시험 ──
   { id: 'h1', examId: 'history', type: 'register_start', date: '2026-07-01', label: '한국사 접수 시작' },

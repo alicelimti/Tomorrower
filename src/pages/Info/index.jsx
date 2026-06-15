@@ -71,6 +71,14 @@ export default function Info() {
               </div>
             </div>
 
+            {/* 검정료 */}
+            {exam.fee && (
+              <div style={{ background: 'white', borderRadius: 14, padding: '14px 16px', marginBottom: 14, border: '1px solid #EDE8FF', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: '#2D1F5E' }}>검정료</span>
+                <span style={{ fontSize: 13, color: '#9B5ED8', fontWeight: 700 }}>{exam.fee}</span>
+              </div>
+            )}
+
             {/* 시험 과목 */}
             <div style={{ background: 'white', borderRadius: 14, padding: '16px', marginBottom: 14, border: '1px solid #EDE8FF' }}>
               <h3 style={{ margin: '0 0 12px', fontSize: 14, fontWeight: 700, color: '#2D1F5E' }}>시험 과목</h3>
