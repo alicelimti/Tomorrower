@@ -1,8 +1,7 @@
 export const CATEGORIES = [
   { id: 'it-data',  label: 'IT·Data',  color: '#6068E8', bg: '#EFEDFF' },
   { id: 'finance',  label: '금융·회계', color: '#9B5ED8', bg: '#F5EEFF' },
-  { id: 'public',   label: '공공',      color: '#B06AD8', bg: '#F8EEFF' },
-  { id: 'language', label: '언어',      color: '#C060C8', bg: '#FDF0FF' },
+{ id: 'language', label: '언어',      color: '#C060C8', bg: '#FDF0FF' },
 ];
 
 export const EXAMS = [
@@ -127,46 +126,6 @@ export const EXAMS = [
     passRate: '15~25%',
     color: '#9858C8',
     subjects: ['재무회계', '세무회계', '원가관리회계'],
-  },
-  // ── 공공 ──
-  {
-    id: 'history',
-    category: 'public',
-    name: '한국사',
-    fullName: '한국사능력검정시험',
-    org: '국사편찬위원회',
-    orgUrl: 'https://www.historyexam.go.kr',
-    passScore: 80,
-    failScore: null,
-    passRate: '약 25%',
-    color: '#9B5ED8',
-    subjects: ['전근대사', '근현대사'],
-  },
-  {
-    id: 'korean-lang',
-    category: 'public',
-    name: '한국어능력시험',
-    fullName: '한국어능력시험 (KPT)',
-    org: '국립국어원',
-    orgUrl: 'https://www.kpt.go.kr',
-    passScore: 60,
-    failScore: null,
-    passRate: '—',
-    color: '#B06AD8',
-    subjects: ['어휘·문법', '쓰기', '읽기', '듣기'],
-  },
-  {
-    id: 'ncs',
-    category: 'public',
-    name: 'NCS',
-    fullName: 'NCS 직업기초능력',
-    org: '한국산업인력공단',
-    orgUrl: 'https://www.ncs.go.kr',
-    passScore: 60,
-    failScore: null,
-    passRate: '—',
-    color: '#C060C8',
-    subjects: ['의사소통능력', '수리능력', '문제해결능력', '정보능력'],
   },
   // 언어
   {
@@ -303,11 +262,6 @@ export const EXAM_SCHEDULE = [
   { id: 'cca-66-re', examId: 'credit-analyst', type: 'register_end',   date: '2026-09-29', label: '신용분석사 제66회 접수 마감' },
   { id: 'cca-66-ex', examId: 'credit-analyst', type: 'exam',           date: '2026-10-31', label: '신용분석사 제66회 시험일' },
   { id: 'cca-66-r',  examId: 'credit-analyst', type: 'result',         date: '2026-11-13', label: '신용분석사 제66회 합격 발표' },
-
-  // ── 한국사능력검정시험 ──
-  { id: 'h1', examId: 'history', type: 'register_start', date: '2026-07-01', label: '한국사 접수 시작' },
-  { id: 'h2', examId: 'history', type: 'register_end',   date: '2026-07-10', label: '한국사 접수 마감' },
-  { id: 'h3', examId: 'history', type: 'exam',           date: '2026-08-01', label: '한국사 시험일' },
 
   // ── TOEIC ──
   { id: 't1', examId: 'toeic', type: 'register_start', date: '2026-06-20', label: 'TOEIC 접수 시작' },
