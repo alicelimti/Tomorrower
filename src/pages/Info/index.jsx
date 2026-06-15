@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { EXAMS, CATEGORIES } from '../../data/exams';
 
 export default function Info() {
-  const [catFilter, setCatFilter] = useState('it-data');
-  const [selected, setSelected] = useState('adsp');
+  const [searchParams] = useSearchParams();
+  const paramExamId = searchParams.get('exam');
+  const paramExam = paramExamId ? EXAMS.find((e) => e.id === paramExamId) : null;
+
+  const [catFilter, setCatFilter] = useState(paramExam?.category ?? 'it-data');
+  const [selected, setSelected] = useState(paramExam?.id ?? 'adsp');
 
   const filteredExams = EXAMS.filter((e) => e.category === catFilter);
   const exam = EXAMS.find((e) => e.id === selected) || filteredExams[0];
