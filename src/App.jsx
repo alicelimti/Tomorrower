@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Schedule from './pages/Schedule';
 import Info from './pages/Info';
 import Quiz from './pages/Quiz';
+import My from './pages/My';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/schedule" element={<><Schedule /><BottomNav /></>} />
         <Route path="/info" element={<><Info /><BottomNav /></>} />
         <Route path="/quiz" element={<><Quiz /><BottomNav /></>} />
+        <Route path="/my" element={<><My /><BottomNav /></>} />
       </Routes>
     </BrowserRouter>
   );

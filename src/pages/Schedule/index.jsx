@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { EXAM_SCHEDULE, EXAMS, CATEGORIES, SCHEDULE_TYPE_COLORS, SCHEDULE_TYPE_LABELS } from '../../data/exams';
-import { useMyExams } from '../../hooks/useMyExams';
 
 function getDday(dateStr) {
   const today = new Date();
@@ -149,8 +148,6 @@ export default function Schedule() {
   const [month, setMonth] = useState(now.getMonth());
   const [view, setView] = useState('timeline');
   const [catFilter, setCatFilter] = useState('all');
-  const { myExams, toggle } = useMyExams();
-
   const prevMonth = () => { if (month === 0) { setMonth(11); setYear(y => y - 1); } else setMonth(m => m - 1); };
   const nextMonth = () => { if (month === 11) { setMonth(0); setYear(y => y + 1); } else setMonth(m => m + 1); };
 
@@ -166,24 +163,6 @@ export default function Schedule() {
       </div>
 
       <div style={{ padding: '16px' }}>
-        {/* 내 시험 관리 */}
-        <div style={{ background: 'white', borderRadius: 14, padding: '14px 16px', marginBottom: 14, border: '1px solid #EDE8FF' }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: '#2D1F5E', marginBottom: 10 }}>
-            내 시험 관리
-            <span style={{ fontSize: 11, fontWeight: 400, color: '#C8B8E8', marginLeft: 6 }}>탭해서 추가/제거</span>
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            {EXAMS.map((exam) => {
-              const selected = myExams.includes(exam.id);
-              return (
-                <button key={exam.id} onClick={() => toggle(exam.id)} style={{ padding: '6px 12px', borderRadius: 20, border: selected ? 'none' : '1.5px solid #EDE8FF', background: selected ? exam.color : '#FAF8FF', color: selected ? 'white' : '#9B88CC', fontSize: 12, fontWeight: selected ? 700 : 400, cursor: 'pointer', whiteSpace: 'nowrap' }}>
-                  {selected ? '✓ ' : ''}{exam.name}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
         {/* 뷰 전환 */}
         <div style={{ display: 'flex', background: '#EDE8FF', borderRadius: 10, padding: 3, marginBottom: 14 }}>
           {[['timeline','📋 타임라인'], ['calendar','📅 캘린더'], ['list','📄 목록']].map(([v, lbl]) => (
