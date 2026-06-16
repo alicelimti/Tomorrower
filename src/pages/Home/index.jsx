@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EXAMS, EXAM_SCHEDULE, CATEGORIES } from '../../data/exams';
+import { useMyExams } from '../../hooks/useMyExams';
 
 const GRADIENT = 'linear-gradient(135deg, #7875E8 0%, #A87FD8 55%, #D4A4DC 100%)';
 const BRAND = '#7875E8';
@@ -64,8 +65,17 @@ function getNextRegisterOpen(categoryFilter) {
   return next || null;
 }
 
+function getNextExamDate(examId) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return EXAM_SCHEDULE
+    .filter((s) => s.examId === examId && s.type === 'exam' && new Date(s.date) >= today)
+    .sort((a, b) => new Date(a.date) - new Date(b.date))[0] || null;
+}
+
 export default function Home() {
   const [catFilter, setCatFilter] = useState('all');
+  const { myExams } = useMyExams();
   const openRegs = getOpenRegistrations(catFilter);
   const nextOpen = getNextRegisterOpen(catFilter);
   const ongoingExams = EXAMS.filter((e) => {
@@ -95,16 +105,58 @@ export default function Home() {
       </div>
 
       <div style={{ padding: '16px' }}>
-        {/* 오늘의 퀴즈 배너 */}
-        <Link to="/quiz" style={{ textDecoration: 'none' }}>
-          <div style={{ background: 'linear-gradient(135deg, #A87FD8, #D4A4DC)', borderRadius: 16, padding: '14px 18px', marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <div style={{ color: 'rgba(255,255,255,0.85)', fontSize: 11, marginBottom: 3 }}>매일 5문제 · Lite 모드</div>
-              <div style={{ color: 'white', fontSize: 15, fontWeight: 700 }}>오늘의 퀴즈 풀기 →</div>
-            </div>
-            <div style={{ fontSize: 32 }}>📝</div>
+        {/* 내 시험 D-Day */}
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <span style={{ fontSize: 15, fontWeight: 700, color: '#2D1F5E' }}>내 시험 D-Day</span>
+            <Link to="/schedule" style={{ fontSize: 12, color: BRAND, textDecoration: 'none' }}>시험 추가 →</Link>
           </div>
-        </Link>
+          {myExams.length === 0 ? (
+            <Link to="/schedule" style={{ textDecoration: 'none' }}>
+              <div style={{ background: 'white', borderRadius: 14, padding: '18px 16px', border: '1.5px dashed #D4CBFF', textAlign: 'center' }}>
+                <div style={{ fontSize: 22, marginBottom: 6 }}>🎯</div>
+                <div style={{ fontSize: 13, color: '#9B88CC', fontWeight: 600 }}>응시할 시험을 추가해보세요</div>
+                <div style={{ fontSize: 11, color: '#C8B8E8', marginTop: 3 }}>시험 일정 탭에서 추가할 수 있어요</div>
+              </div>
+            </Link>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {myExams.map((examId) => {
+                const exam = EXAMS.find((e) => e.id === examId);
+                if (!exam) return null;
+                const cat = CATEGORIES.find((c) => c.id === exam.category);
+                const nextExam = exam.ongoing ? null : getNextExamDate(examId);
+                const dday = nextExam ? getDday(nextExam.date) : null;
+                const isUrgent = dday && dday !== 'D-Day' && !dday.startsWith('D+') && parseInt(dday.slice(2)) <= 7;
+                return (
+                  <div key={examId} style={{ background: 'white', borderRadius: 12, padding: '12px 14px', border: '1px solid #EDE8FF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: 3, background: exam.color }} />
+                        <span style={{ fontSize: 14, fontWeight: 700, color: '#2D1F5E' }}>{exam.name}</span>
+                        <span style={{ fontSize: 10, color: 'white', background: cat?.color, padding: '1px 6px', borderRadius: 8 }}>{cat?.label}</span>
+                      </div>
+                      {exam.ongoing ? (
+                        <div style={{ fontSize: 11, color: '#48C89A', fontWeight: 600 }}>상시시험 · 언제든지 응시 가능</div>
+                      ) : nextExam ? (
+                        <div style={{ fontSize: 11, color: isUrgent ? '#EF6B8A' : '#9B88CC', fontWeight: isUrgent ? 700 : 400 }}>
+                          시험일 {nextExam.date.slice(5).replace('-', '.')}
+                        </div>
+                      ) : (
+                        <div style={{ fontSize: 11, color: '#C8B8E8' }}>다음 시험 일정 미정</div>
+                      )}
+                    </div>
+                    {exam.ongoing ? (
+                      <div style={{ background: '#48C89A', color: 'white', borderRadius: 20, padding: '4px 12px', fontSize: 13, fontWeight: 700 }}>상시</div>
+                    ) : dday ? (
+                      <div style={{ background: dday === 'D-Day' ? '#F59E0B' : isUrgent ? '#EF6B8A' : BRAND, color: 'white', borderRadius: 20, padding: '4px 12px', fontSize: 13, fontWeight: 700, whiteSpace: 'nowrap' }}>{dday}</div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
 
         {/* 카테고리 필터 */}
         <div style={{ display: 'flex', gap: 6, marginBottom: 14 }}>
