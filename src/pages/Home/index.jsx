@@ -109,14 +109,14 @@ export default function Home() {
         <div style={{ marginBottom: 16 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: '#2D1F5E' }}>내 시험 D-Day</span>
-            <Link to="/schedule" style={{ fontSize: 12, color: BRAND, textDecoration: 'none' }}>시험 추가 →</Link>
+            <Link to="/my" style={{ fontSize: 12, color: BRAND, textDecoration: 'none' }}>시험 추가 →</Link>
           </div>
           {myExams.length === 0 ? (
-            <Link to="/schedule" style={{ textDecoration: 'none' }}>
+            <Link to="/my" style={{ textDecoration: 'none' }}>
               <div style={{ background: 'white', borderRadius: 14, padding: '18px 16px', border: '1.5px dashed #D4CBFF', textAlign: 'center' }}>
                 <div style={{ fontSize: 22, marginBottom: 6 }}>🎯</div>
                 <div style={{ fontSize: 13, color: '#9B88CC', fontWeight: 600 }}>응시할 시험을 추가해보세요</div>
-                <div style={{ fontSize: 11, color: '#C8B8E8', marginTop: 3 }}>시험 일정 탭에서 추가할 수 있어요</div>
+                <div style={{ fontSize: 11, color: '#C8B8E8', marginTop: 3 }}>My 탭에서 추가할 수 있어요</div>
               </div>
             </Link>
           ) : (

@@ -21,13 +21,15 @@ function getNextExamDate(examId) {
 }
 
 export default function My() {
-  const { myExams, toggle } = useMyExams();
+  const { myExams, toggle, synced } = useMyExams();
 
   return (
     <div style={{ paddingBottom: 80 }}>
       <div style={{ background: GRADIENT, padding: '20px 20px 24px', color: 'white' }}>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>My 시험</h1>
-        <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>응시할 시험을 추가하고 D-Day를 확인하세요</p>
+        <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+          {synced ? '응시할 시험을 추가하고 D-Day를 확인하세요' : '클라우드에서 불러오는 중...'}
+        </p>
       </div>
 
       <div style={{ padding: '16px' }}>
