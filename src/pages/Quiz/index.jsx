@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { QUIZ_BANK } from '../../data/quizBank';
 import { EXAMS, CATEGORIES } from '../../data/exams';
+import { supabase } from '../../supabase/client';
+import { getDeviceId } from '../../hooks/useDeviceId';
 
 const LITE_COUNT = 5;
 
@@ -19,6 +21,7 @@ export default function Quiz() {
   const [results, setResults] = useState([]);
   const [finished, setFinished] = useState(false);
   const [bookmarked, setBookmarked] = useState([]);
+  const [saving, setSaving] = useState(false);
 
   const availableExams = EXAMS.filter((e) => QUIZ_BANK[e.id] && (catFilter === 'all' || e.category === catFilter));
 
@@ -44,9 +47,27 @@ export default function Quiz() {
     setResults((prev) => [...prev, { question: q, selected: idx, correct: idx === q.answer }]);
   };
 
+  const saveResult = async (finalResults) => {
+    setSaving(true);
+    const correct = finalResults.filter((r) => r.correct).length;
+    const score = Math.round((correct / finalResults.length) * 100);
+    await supabase.from('quiz_results').insert({
+      device_id: getDeviceId(),
+      exam_id: selectedExam,
+      score,
+      correct_count: correct,
+      total_count: finalResults.length,
+    });
+    setSaving(false);
+  };
+
   const handleNext = () => {
-    if (current + 1 >= questions.length) setFinished(true);
-    else { setCurrent((c) => c + 1); setSelected(null); setAnswered(false); }
+    if (current + 1 >= questions.length) {
+      saveResult(results);
+      setFinished(true);
+    } else {
+      setCurrent((c) => c + 1); setSelected(null); setAnswered(false);
+    }
   };
 
   const toggleBookmark = (id) => {
@@ -68,6 +89,8 @@ export default function Quiz() {
             <div style={{ fontSize: 52, fontWeight: 800, color: pct >= 80 ? '#48C89A' : pct >= 60 ? '#F59E0B' : '#EF6B8A' }}>{pct}점</div>
             <div style={{ fontSize: 15, color: '#9B88CC', marginTop: 4 }}>{questions.length}문제 중 {correctCount}개 정답</div>
             <div style={{ marginTop: 12, fontSize: 24 }}>{pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '💪'}</div>
+            {saving && <div style={{ marginTop: 8, fontSize: 11, color: '#C8B8E8' }}>결과 저장 중...</div>}
+            {!saving && <div style={{ marginTop: 8, fontSize: 11, color: '#48C89A' }}>✓ 결과가 저장됐어요</div>}
           </div>
 
           <h3 style={{ margin: '0 0 10px', fontSize: 14, fontWeight: 700, color: '#2D1F5E' }}>오답 노트</h3>

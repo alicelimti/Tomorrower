@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import { EXAMS, CATEGORIES, EXAM_SCHEDULE } from '../../data/exams';
 import { useMyExams } from '../../hooks/useMyExams';
+import { supabase } from '../../supabase/client';
+import { getDeviceId } from '../../hooks/useDeviceId';
 
 const GRADIENT = 'linear-gradient(135deg, #7875E8 0%, #A87FD8 55%, #D4A4DC 100%)';
 
@@ -22,6 +25,21 @@ function getNextExamDate(examId) {
 
 export default function My() {
   const { myExams, toggle } = useMyExams();
+  const [history, setHistory] = useState([]);
+  const [historyLoading, setHistoryLoading] = useState(true);
+
+  useEffect(() => {
+    supabase
+      .from('quiz_results')
+      .select('*')
+      .eq('device_id', getDeviceId())
+      .order('created_at', { ascending: false })
+      .limit(20)
+      .then(({ data }) => {
+        setHistory(data || []);
+        setHistoryLoading(false);
+      });
+  }, []);
 
   return (
     <div style={{ paddingBottom: 80 }}>
@@ -72,6 +90,47 @@ export default function My() {
             </div>
           </div>
         )}
+
+        {/* 퀴즈 히스토리 */}
+        <div style={{ marginBottom: 20 }}>
+          <h2 style={{ margin: '0 0 10px', fontSize: 14, fontWeight: 700, color: '#2D1F5E' }}>퀴즈 히스토리</h2>
+          {historyLoading ? (
+            <div style={{ textAlign: 'center', color: '#C8B8E8', padding: '20px 0', fontSize: 13 }}>불러오는 중...</div>
+          ) : history.length === 0 ? (
+            <div style={{ background: 'white', borderRadius: 12, padding: '18px 16px', border: '1px solid #EDE8FF', textAlign: 'center' }}>
+              <div style={{ fontSize: 13, color: '#C8B8E8' }}>아직 퀴즈 기록이 없어요</div>
+              <div style={{ fontSize: 11, color: '#D4CBFF', marginTop: 4 }}>퀴즈 탭에서 문제를 풀어보세요</div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {history.map((h) => {
+                const exam = EXAMS.find((e) => e.id === h.exam_id);
+                const cat = CATEGORIES.find((c) => c.id === exam?.category);
+                const date = new Date(h.created_at);
+                const dateStr = `${date.getMonth() + 1}.${date.getDate()} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
+                const scoreColor = h.score >= 80 ? '#48C89A' : h.score >= 60 ? '#F59E0B' : '#EF6B8A';
+                return (
+                  <div key={h.id} style={{ background: 'white', borderRadius: 12, padding: '12px 14px', border: '1px solid #EDE8FF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: '#2D1F5E' }}>
+                          {h.exam_id === 'all' ? '전체 랜덤' : exam?.name ?? h.exam_id}
+                        </span>
+                        {cat && <span style={{ fontSize: 10, color: 'white', background: cat.color, padding: '1px 6px', borderRadius: 8 }}>{cat.label}</span>}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#C8B8E8' }}>
+                        {dateStr} · {h.total_count}문제 중 {h.correct_count}개 정답
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 20, fontWeight: 800, color: scoreColor, minWidth: 48, textAlign: 'right' }}>
+                      {h.score}점
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
 
         {/* 시험 관리 */}
         <div style={{ background: 'white', borderRadius: 14, padding: '14px 16px', border: '1px solid #EDE8FF' }}>
