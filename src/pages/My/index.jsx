@@ -1,5 +1,6 @@
 import { EXAMS, CATEGORIES, EXAM_SCHEDULE } from '../../data/exams';
 import { useMyExams } from '../../hooks/useMyExams';
+import { useAuth } from '../../contexts/AuthContext';
 
 const GRADIENT = 'linear-gradient(135deg, #7875E8 0%, #A87FD8 55%, #D4A4DC 100%)';
 
@@ -21,18 +22,61 @@ function getNextExamDate(examId) {
 }
 
 export default function My() {
+  const { user, authLoading, signInWithGoogle, signOut } = useAuth();
   const { myExams, toggle, synced } = useMyExams();
 
   return (
     <div style={{ paddingBottom: 80 }}>
+      {/* 헤더 */}
       <div style={{ background: GRADIENT, padding: '20px 20px 24px', color: 'white' }}>
-        <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>My 시험</h1>
-        <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
-          {synced ? '응시할 시험을 추가하고 D-Day를 확인하세요' : '클라우드에서 불러오는 중...'}
-        </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div>
+            <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>My 시험</h1>
+            <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+              {!synced ? '클라우드에서 불러오는 중...' : '응시할 시험을 추가하고 D-Day를 확인하세요'}
+            </p>
+          </div>
+          {/* 로그인 상태: 사용자 정보 + 로그아웃 버튼 */}
+          {!authLoading && user && (
+            <button
+              onClick={signOut}
+              style={{ background: 'rgba(255,255,255,0.2)', border: 'none', borderRadius: 20, padding: '6px 12px', color: 'white', fontSize: 12, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
+            >
+              <span style={{ maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user.user_metadata?.name || user.email}
+              </span>
+              <span style={{ fontSize: 14 }}>✕</span>
+            </button>
+          )}
+        </div>
       </div>
 
       <div style={{ padding: '16px' }}>
+        {/* 로그아웃 상태: 로그인 유도 카드 */}
+        {!authLoading && !user && (
+          <div style={{ background: 'white', borderRadius: 14, padding: '18px 16px', border: '1.5px solid #EDE8FF', marginBottom: 16, textAlign: 'center' }}>
+            <div style={{ fontSize: 28, marginBottom: 8 }}>☁️</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#2D1F5E', marginBottom: 4 }}>
+              Google로 로그인하면
+            </div>
+            <div style={{ fontSize: 12, color: '#9B88CC', marginBottom: 14 }}>
+              시험 목록이 클라우드에 저장되어<br />어떤 기기에서도 동기화돼요
+            </div>
+            <button
+              onClick={signInWithGoogle}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '12px', borderRadius: 10, border: '1.5px solid #EDE8FF', background: 'white', fontSize: 14, fontWeight: 600, color: '#374151', cursor: 'pointer' }}
+            >
+              <svg width="18" height="18" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.8 18.9 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5.1l-6.2-5.2C29.4 35.5 26.8 36 24 36c-5.3 0-9.7-3.3-11.3-7.9l-6.5 5C9.6 39.5 16.3 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.4 4.3-4.4 5.7l6.2 5.2C36.9 40.7 44 35 44 24c0-1.3-.1-2.6-.4-3.9z"/>
+              </svg>
+              Google로 시작하기
+            </button>
+          </div>
+        )}
+
         {/* D-Day 현황 */}
         {myExams.length > 0 && (
           <div style={{ marginBottom: 20 }}>
@@ -77,10 +121,13 @@ export default function My() {
 
         {/* 시험 관리 */}
         <div style={{ background: 'white', borderRadius: 14, padding: '14px 16px', border: '1px solid #EDE8FF' }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: '#2D1F5E', marginBottom: 12 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: '#2D1F5E', marginBottom: 4 }}>
             시험 관리
             <span style={{ fontSize: 11, fontWeight: 400, color: '#C8B8E8', marginLeft: 6 }}>탭해서 추가 / 제거</span>
           </div>
+          {!user && (
+            <div style={{ fontSize: 11, color: '#C8B8E8', marginBottom: 10 }}>로그인 전에는 이 기기에만 저장돼요</div>
+          )}
           {CATEGORIES.map((cat) => {
             const catExams = EXAMS.filter((e) => e.category === cat.id);
             return (
