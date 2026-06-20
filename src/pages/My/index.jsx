@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { EXAMS, CATEGORIES, EXAM_SCHEDULE } from '../../data/exams';
 import { useMyExams } from '../../hooks/useMyExams';
 import { useAuth } from '../../contexts/AuthContext';
@@ -23,7 +24,16 @@ function getNextExamDate(examId) {
 
 export default function My() {
   const { user, authLoading, signInWithGoogle, signOut } = useAuth();
-  const { myExams, toggle, synced } = useMyExams();
+  const { myExams, toggle, synced, uploadedCount } = useMyExams();
+  const [showUploadToast, setShowUploadToast] = useState(false);
+
+  useEffect(() => {
+    if (uploadedCount > 0) {
+      setShowUploadToast(true);
+      const t = setTimeout(() => setShowUploadToast(false), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [uploadedCount]);
 
   return (
     <div style={{ paddingBottom: 80 }}>
@@ -50,6 +60,14 @@ export default function My() {
           )}
         </div>
       </div>
+
+      {/* 업로드 완료 토스트 */}
+      {showUploadToast && (
+        <div style={{ margin: '12px 16px 0', background: '#48C89A', borderRadius: 10, padding: '10px 14px', color: 'white', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span>☁️</span>
+          <span>기기에 저장된 시험 {uploadedCount}개를 클라우드에 업로드했어요</span>
+        </div>
+      )}
 
       <div style={{ padding: '16px' }}>
         {/* 로그아웃 상태: 로그인 유도 카드 */}
