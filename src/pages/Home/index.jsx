@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EXAMS, EXAM_SCHEDULE, CATEGORIES } from '../../data/exams';
 import { useMyExams } from '../../hooks/useMyExams';
+import { useAuth } from '../../contexts/AuthContext';
 
 const GRADIENT = 'linear-gradient(135deg, #7875E8 0%, #A87FD8 55%, #D4A4DC 100%)';
 const BRAND = '#7875E8';
@@ -76,6 +77,8 @@ function getNextExamDate(examId) {
 export default function Home() {
   const [catFilter, setCatFilter] = useState('all');
   const { myExams } = useMyExams();
+  const { user } = useAuth();
+  const displayName = user?.user_metadata?.name || '미루니';
   const openRegs = getOpenRegistrations(catFilter);
   const nextOpen = getNextRegisterOpen(catFilter);
   const ongoingExams = EXAMS.filter((e) => {
@@ -94,7 +97,7 @@ export default function Home() {
           <div>
             <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', marginBottom: 4 }}>{dateLabel}</div>
             <div style={{ fontSize: 22, fontWeight: 700 }}>
-              안녕하세요! <span style={{ color: '#F0E060' }}>미루니</span> 👋
+              안녕하세요! <span style={{ color: '#F0E060' }}>{displayName}</span> 👋
             </div>
             <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 6 }}>오늘도 조금씩, 함께 시작해요</div>
           </div>
