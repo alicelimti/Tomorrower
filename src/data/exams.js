@@ -269,6 +269,38 @@ export const EXAM_SCHEDULE = [
   { id: 'cca-66-ex', examId: 'credit-analyst', type: 'exam',           date: '2026-10-31', label: '신용분석사 제66회 시험일' },
   { id: 'cca-66-r',  examId: 'credit-analyst', type: 'result',         date: '2026-11-13', label: '신용분석사 제66회 합격 발표' },
 
+  // ── 전산회계 (한국세무사회) ──
+  // 제124회 (접수 01.02~01.08 / 시험 01.31 / 합발 02.26)
+  { id: 'ca-124-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-01-02', label: '전산회계 제124회 접수 시작' },
+  { id: 'ca-124-re', examId: 'computer-accounting', type: 'register_end',   date: '2026-01-08', label: '전산회계 제124회 접수 마감' },
+  { id: 'ca-124-ex', examId: 'computer-accounting', type: 'exam',           date: '2026-01-31', label: '전산회계 제124회 시험일' },
+  { id: 'ca-124-r',  examId: 'computer-accounting', type: 'result',         date: '2026-02-26', label: '전산회계 제124회 합격 발표' },
+  // 제125회 (접수 03.05~03.11 / 시험 04.04 / 합발 04.23)
+  { id: 'ca-125-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-03-05', label: '전산회계 제125회 접수 시작' },
+  { id: 'ca-125-re', examId: 'computer-accounting', type: 'register_end',   date: '2026-03-11', label: '전산회계 제125회 접수 마감' },
+  { id: 'ca-125-ex', examId: 'computer-accounting', type: 'exam',           date: '2026-04-04', label: '전산회계 제125회 시험일' },
+  { id: 'ca-125-r',  examId: 'computer-accounting', type: 'result',         date: '2026-04-23', label: '전산회계 제125회 합격 발표' },
+  // 제126회 (접수 04.30~05.07 / 시험 06.06 / 합발 06.25)
+  { id: 'ca-126-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-04-30', label: '전산회계 제126회 접수 시작' },
+  { id: 'ca-126-re', examId: 'computer-accounting', type: 'register_end',   date: '2026-05-07', label: '전산회계 제126회 접수 마감' },
+  { id: 'ca-126-ex', examId: 'computer-accounting', type: 'exam',           date: '2026-06-06', label: '전산회계 제126회 시험일' },
+  { id: 'ca-126-r',  examId: 'computer-accounting', type: 'result',         date: '2026-06-25', label: '전산회계 제126회 합격 발표' },
+  // 제127회 (접수 07.02~07.08 / 시험 08.01 / 합발 08.20)
+  { id: 'ca-127-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-07-02', label: '전산회계 제127회 접수 시작' },
+  { id: 'ca-127-re', examId: 'computer-accounting', type: 'register_end',   date: '2026-07-08', label: '전산회계 제127회 접수 마감' },
+  { id: 'ca-127-ex', examId: 'computer-accounting', type: 'exam',           date: '2026-08-01', label: '전산회계 제127회 시험일' },
+  { id: 'ca-127-r',  examId: 'computer-accounting', type: 'result',         date: '2026-08-20', label: '전산회계 제127회 합격 발표' },
+  // 제128회 (접수 08.27~09.02 / 시험 10.03 / 합발 10.29)
+  { id: 'ca-128-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-08-27', label: '전산회계 제128회 접수 시작' },
+  { id: 'ca-128-re', examId: 'computer-accounting', type: 'register_end',   date: '2026-09-02', label: '전산회계 제128회 접수 마감' },
+  { id: 'ca-128-ex', examId: 'computer-accounting', type: 'exam',           date: '2026-10-03', label: '전산회계 제128회 시험일' },
+  { id: 'ca-128-r',  examId: 'computer-accounting', type: 'result',         date: '2026-10-29', label: '전산회계 제128회 합격 발표' },
+  // 제129회 (접수 11.05~11.11 / 시험 12.05 / 합발 12.24)
+  { id: 'ca-129-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-11-05', label: '전산회계 제129회 접수 시작' },
+  { id: 'ca-129-re', examId: 'computer-accounting', type: 'register_end',   date: '2026-11-11', label: '전산회계 제129회 접수 마감' },
+  { id: 'ca-129-ex', examId: 'computer-accounting', type: 'exam',           date: '2026-12-05', label: '전산회계 제129회 시험일' },
+  { id: 'ca-129-r',  examId: 'computer-accounting', type: 'result',         date: '2026-12-24', label: '전산회계 제129회 합격 발표' },
+
   // ── TOEIC ──
   { id: 't1', examId: 'toeic', type: 'register_start', date: '2026-06-20', label: 'TOEIC 접수 시작' },
   { id: 't2', examId: 'toeic', type: 'register_end',   date: '2026-06-27', label: 'TOEIC 접수 마감' },
