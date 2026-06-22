@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { EXAM_SCHEDULE, EXAMS, CATEGORIES, SCHEDULE_TYPE_COLORS, SCHEDULE_TYPE_LABELS } from '../../data/exams';
 
 function getDday(dateStr) {
@@ -92,15 +92,23 @@ function TimelineView({ catFilter }) {
   );
 }
 
-function CalendarView({ year, month }) {
+const DOW_LABELS = ['일', '월', '화', '수', '목', '금', '토'];
+
+function CalendarView({ year, month, catFilter }) {
+  const [selectedDay, setSelectedDay] = useState(null);
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date();
+
+  // 월이 바뀌면 선택 해제
+  useEffect(() => { setSelectedDay(null); }, [year, month]);
 
   const eventsByDay = {};
   EXAM_SCHEDULE.forEach((s) => {
     const d = new Date(s.date);
     if (d.getFullYear() === year && d.getMonth() === month) {
+      const exam = EXAMS.find((e) => e.id === s.examId);
+      if (catFilter !== 'all' && exam?.category !== catFilter) return;
       const day = d.getDate();
       if (!eventsByDay[day]) eventsByDay[day] = [];
       eventsByDay[day].push(s);
@@ -110,6 +118,9 @@ function CalendarView({ year, month }) {
   const cells = [];
   for (let i = 0; i < firstDay; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+
+  const selectedEvents = selectedDay ? (eventsByDay[selectedDay] || []) : [];
+  const selectedDow = selectedDay ? DOW_LABELS[new Date(year, month, selectedDay).getDay()] : '';
 
   return (
     <div>
@@ -122,22 +133,71 @@ function CalendarView({ year, month }) {
         {cells.map((day, i) => {
           if (!day) return <div key={`e-${i}`} />;
           const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+          const isSelected = day === selectedDay;
           const events = eventsByDay[day] || [];
           const dow = (firstDay + day - 1) % 7;
           return (
-            <div key={day} style={{ minHeight: 48, padding: 4, borderRadius: 8, background: isToday ? '#EFF6FF' : 'transparent' }}>
-              <div style={{ width: 24, height: 24, borderRadius: 12, background: isToday ? '#7875E8' : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2px', fontSize: 12, fontWeight: isToday ? 700 : 400, color: isToday ? 'white' : dow === 0 ? '#EF6B8A' : dow === 6 ? '#3B82F6' : '#374151' }}>
+            <div
+              key={day}
+              onClick={() => setSelectedDay(prev => prev === day ? null : day)}
+              style={{ minHeight: 48, padding: 4, borderRadius: 8, background: isSelected ? '#EDE8FF' : isToday ? '#EFF6FF' : 'transparent', cursor: 'pointer' }}
+            >
+              <div style={{ width: 24, height: 24, borderRadius: 12, background: isToday ? '#7875E8' : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2px', fontSize: 12, fontWeight: (isToday || isSelected) ? 700 : 400, color: isToday ? 'white' : isSelected ? '#7875E8' : dow === 0 ? '#EF6B8A' : dow === 6 ? '#3B82F6' : '#374151' }}>
                 {day}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                 {events.slice(0, 2).map((e) => (
                   <div key={e.id} style={{ height: 4, borderRadius: 2, background: SCHEDULE_TYPE_COLORS[e.type] }} />
                 ))}
+                {events.length > 2 && (
+                  <div style={{ height: 4, borderRadius: 2, background: '#E2D9F3' }} />
+                )}
               </div>
             </div>
           );
         })}
       </div>
+
+      {/* 날짜 상세 패널 */}
+      {selectedDay && (
+        <div style={{ marginTop: 14, background: 'white', borderRadius: 14, border: '1px solid #EDE8FF', overflow: 'hidden' }}>
+          <div style={{ padding: '12px 16px', borderBottom: '1px solid #F3EEFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#2D1F5E' }}>
+              {month + 1}월 {selectedDay}일 ({selectedDow})
+            </div>
+            <button
+              onClick={() => setSelectedDay(null)}
+              style={{ background: 'none', border: 'none', color: '#C8B8E8', fontSize: 18, cursor: 'pointer', lineHeight: 1, padding: '0 2px' }}
+            >✕</button>
+          </div>
+          <div>
+            {selectedEvents.length === 0 ? (
+              <div style={{ textAlign: 'center', color: '#C8B8E8', fontSize: 13, padding: '24px 0' }}>일정이 없는 날이에요</div>
+            ) : (
+              selectedEvents.map((s, idx) => {
+                const exam = EXAMS.find((e) => e.id === s.examId);
+                const cat = CATEGORIES.find((c) => c.id === exam?.category);
+                const color = SCHEDULE_TYPE_COLORS[s.type];
+                const dday = getDday(s.date);
+                const isUrgent = dday !== 'D-Day' && !dday.startsWith('D+') && parseInt(dday.slice(2)) <= 7;
+                return (
+                  <div key={s.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 16px', borderBottom: idx < selectedEvents.length - 1 ? '1px solid #F9F7FF' : 'none' }}>
+                    <div style={{ width: 4, borderRadius: 2, alignSelf: 'stretch', background: color, flexShrink: 0 }} />
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: '#2D1F5E', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{exam?.name}</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 2 }}>
+                        <span style={{ fontSize: 11, color: '#9B88CC' }}>{SCHEDULE_TYPE_LABELS[s.type]}</span>
+                        {cat && <span style={{ fontSize: 10, color: 'white', background: cat.color, padding: '1px 6px', borderRadius: 8 }}>{cat.label}</span>}
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: dday === 'D-Day' ? '#F59E0B' : isUrgent ? '#EF6B8A' : color, whiteSpace: 'nowrap', flexShrink: 0 }}>{dday}</div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -190,7 +250,7 @@ export default function Schedule() {
               <span style={{ fontSize: 16, fontWeight: 700, color: '#2D1F5E' }}>{year}년 {MONTHS[month]}</span>
               <button onClick={nextMonth} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', color: '#374151', padding: '4px 8px' }}>→</button>
             </div>
-            <CalendarView year={year} month={month} />
+            <CalendarView year={year} month={month} catFilter={catFilter} />
           </>
         )}
 
