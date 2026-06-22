@@ -46,6 +46,23 @@ function TimelineView({ catFilter }) {
         const schedules = EXAM_SCHEDULE.filter((s) => s.examId === examId);
         const cat = CATEGORIES.find((c) => c.id === exam?.category);
 
+        // 가장 가까운 미래 시험일 찾기
+        const futureExams = schedules
+          .filter((s) => s.type === 'exam' && new Date(s.date) >= today)
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+        const nextExamEntry = futureExams[0];
+        const afterExamEntry = futureExams[1];
+
+        // 해당 회차 기준으로 각 타입의 일정 반환
+        const getRoundEntry = (type) => {
+          if (type === 'exam') return nextExamEntry || null;
+          if (type === 'next_exam') return afterExamEntry || null;
+          if (!nextExamEntry) return null;
+          return schedules
+            .filter((s) => s.type === type && new Date(s.date) <= new Date(nextExamEntry.date))
+            .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
+        };
+
         return (
           <div key={examId} style={{ background: 'white', borderRadius: 14, padding: '14px', border: '1px solid #EDE8FF' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
@@ -54,10 +71,8 @@ function TimelineView({ catFilter }) {
                 <span style={{ fontSize: 15, fontWeight: 700, color: '#2D1F5E' }}>{exam?.name}</span>
                 <span style={{ fontSize: 10, color: 'white', background: cat?.color, padding: '2px 7px', borderRadius: 8 }}>{cat?.label}</span>
               </div>
-              {(() => {
-                const examDate = schedules.find((s) => s.type === 'exam');
-                if (!examDate) return null;
-                const dday = getDday(examDate.date);
+              {nextExamEntry && (() => {
+                const dday = getDday(nextExamEntry.date);
                 const isUrgent = dday !== 'D-Day' && !dday.startsWith('D+') && parseInt(dday.slice(2)) <= 7;
                 return (
                   <span style={{ fontSize: 12, fontWeight: 700, color: dday === 'D-Day' ? '#F59E0B' : isUrgent ? '#EF6B8A' : '#7875E8' }}>{dday}</span>
@@ -66,9 +81,9 @@ function TimelineView({ catFilter }) {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 4 }}>
               {TIMELINE_STEPS.map((step, idx) => {
-                const s = schedules.find((sc) => sc.type === step.type);
+                const s = getRoundEntry(step.type);
                 const hasData = !!s;
-                const isPast = hasData && new Date(s.date) < new Date();
+                const isPast = hasData && new Date(s.date) < today;
                 return (
                   <div key={step.type} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
                     {idx < TIMELINE_STEPS.length - 1 && (
