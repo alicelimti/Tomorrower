@@ -269,6 +269,28 @@ export const EXAM_SCHEDULE = [
   { id: 'cca-66-ex', examId: 'credit-analyst', type: 'exam',           date: '2026-10-31', label: '신용분석사 제66회 시험일' },
   { id: 'cca-66-r',  examId: 'credit-analyst', type: 'result',         date: '2026-11-13', label: '신용분석사 제66회 합격 발표' },
 
+  // ── 투자자산운용사 (금융투자협회) ──
+  // 제44회 (접수 25.12.22~25.12.26 / 시험 01.18 / 합발 01.29)
+  { id: 'im-44-rs', examId: 'investment-manager', type: 'register_start', date: '2025-12-22', label: '투자자산운용사 제44회 접수 시작' },
+  { id: 'im-44-re', examId: 'investment-manager', type: 'register_end',   date: '2025-12-26', label: '투자자산운용사 제44회 접수 마감' },
+  { id: 'im-44-ex', examId: 'investment-manager', type: 'exam',           date: '2026-01-18', label: '투자자산운용사 제44회 시험일' },
+  { id: 'im-44-r',  examId: 'investment-manager', type: 'result',         date: '2026-01-29', label: '투자자산운용사 제44회 합격 발표' },
+  // 제45회 (접수 26.04.13~26.04.17 / 시험 05.10 / 합발 05.21)
+  { id: 'im-45-rs', examId: 'investment-manager', type: 'register_start', date: '2026-04-13', label: '투자자산운용사 제45회 접수 시작' },
+  { id: 'im-45-re', examId: 'investment-manager', type: 'register_end',   date: '2026-04-17', label: '투자자산운용사 제45회 접수 마감' },
+  { id: 'im-45-ex', examId: 'investment-manager', type: 'exam',           date: '2026-05-10', label: '투자자산운용사 제45회 시험일' },
+  { id: 'im-45-r',  examId: 'investment-manager', type: 'result',         date: '2026-05-21', label: '투자자산운용사 제45회 합격 발표' },
+  // 제46회 (접수 26.07.27~26.07.31 / 시험 08.23 / 합발 09.03)
+  { id: 'im-46-rs', examId: 'investment-manager', type: 'register_start', date: '2026-07-27', label: '투자자산운용사 제46회 접수 시작' },
+  { id: 'im-46-re', examId: 'investment-manager', type: 'register_end',   date: '2026-07-31', label: '투자자산운용사 제46회 접수 마감' },
+  { id: 'im-46-ex', examId: 'investment-manager', type: 'exam',           date: '2026-08-23', label: '투자자산운용사 제46회 시험일' },
+  { id: 'im-46-r',  examId: 'investment-manager', type: 'result',         date: '2026-09-03', label: '투자자산운용사 제46회 합격 발표' },
+  // 제47회 (접수 26.10.12~26.10.16 / 시험 11.08 / 합발 11.19)
+  { id: 'im-47-rs', examId: 'investment-manager', type: 'register_start', date: '2026-10-12', label: '투자자산운용사 제47회 접수 시작' },
+  { id: 'im-47-re', examId: 'investment-manager', type: 'register_end',   date: '2026-10-16', label: '투자자산운용사 제47회 접수 마감' },
+  { id: 'im-47-ex', examId: 'investment-manager', type: 'exam',           date: '2026-11-08', label: '투자자산운용사 제47회 시험일' },
+  { id: 'im-47-r',  examId: 'investment-manager', type: 'result',         date: '2026-11-19', label: '투자자산운용사 제47회 합격 발표' },
+
   // ── 전산회계 (한국세무사회) ──
   // 제124회 (접수 01.02~01.08 / 시험 01.31 / 합발 02.26)
   { id: 'ca-124-rs', examId: 'computer-accounting', type: 'register_start', date: '2026-01-02', label: '전산회계 제124회 접수 시작' },
