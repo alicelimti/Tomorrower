@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --page-pb: calc(80px + env(safe-area-inset-bottom));
+}
+
 @theme {
   --color-brand:        #7875E8;
   --color-brand-dark:   #5860D8;

@@ -21,7 +21,7 @@ export default function Info() {
   };
 
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div style={{ paddingBottom: 'var(--page-pb)' }}>
       <div style={{ background: 'linear-gradient(135deg, #7875E8 0%, #A87FD8 55%, #D4A4DC 100%)', padding: '20px 20px 0', color: 'white' }}>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>시험 정보</h1>
         <p style={{ margin: '4px 0 12px', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>합격 기준 · 공식 사이트</p>

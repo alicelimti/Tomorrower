@@ -216,7 +216,7 @@ export default function Schedule() {
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div style={{ paddingBottom: 'var(--page-pb)' }}>
       <div style={{ background: 'linear-gradient(135deg, #7875E8 0%, #A87FD8 55%, #D4A4DC 100%)', padding: '20px 20px 16px', color: 'white' }}>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>시험 일정</h1>
         <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>접수 · 취소 · 응시 · 다음 시험 타임라인</p>

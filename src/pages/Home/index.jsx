@@ -90,7 +90,7 @@ export default function Home() {
   const dateLabel = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
 
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div style={{ paddingBottom: 'var(--page-pb)' }}>
       {/* 헤더 */}
       <div style={{ background: GRADIENT, padding: '28px 20px 24px', color: 'white' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>

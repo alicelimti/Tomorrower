@@ -36,7 +36,7 @@ export default function My() {
   }, [uploadedCount]);
 
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div style={{ paddingBottom: 'var(--page-pb)' }}>
       {/* 헤더 */}
       <div style={{ background: GRADIENT, padding: '20px 20px 24px', color: 'white' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>

@@ -59,7 +59,7 @@ export default function Quiz() {
   if (finished) {
     const pct = Math.round((correctCount / questions.length) * 100);
     return (
-      <div style={{ paddingBottom: 80 }}>
+      <div style={{ paddingBottom: 'var(--page-pb)' }}>
         <div style={{ background: 'linear-gradient(135deg, #A87FD8, #C060C8)', padding: '20px 20px 16px', color: 'white' }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>퀴즈 완료! 🎉</h1>
         </div>
@@ -105,7 +105,7 @@ export default function Quiz() {
   if (quizStarted) {
     const q = questions[current];
     return (
-      <div style={{ paddingBottom: 80 }}>
+      <div style={{ paddingBottom: 'var(--page-pb)' }}>
         <div style={{ background: 'linear-gradient(135deg, #A87FD8, #C060C8)', padding: '20px 20px 16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.85)', fontSize: 13, marginBottom: 8 }}>
             <span>Lite 모드 {current + 1} / {questions.length}</span>
@@ -152,7 +152,7 @@ export default function Quiz() {
 
   // 시작 전 선택 화면
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div style={{ paddingBottom: 'var(--page-pb)' }}>
       <div style={{ background: 'linear-gradient(135deg, #A87FD8, #C060C8)', padding: '20px 20px 16px', color: 'white' }}>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>오늘의 퀴즈</h1>
         <p style={{ margin: '4px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.75)' }}>Lite 모드 · 핵심 기출 5문제</p>
