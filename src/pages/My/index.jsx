@@ -166,6 +166,11 @@ export default function My() {
             로그아웃
           </button>
         )}
+
+        {/* 푸터 */}
+        <div style={{ marginTop: 28, textAlign: 'center', fontSize: 12, color: '#C8B8E8' }}>
+          © 2026 임윤서. Made with 🔥
+        </div>
       </div>
     </div>
   );
