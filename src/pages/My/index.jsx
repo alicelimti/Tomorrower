@@ -46,18 +46,6 @@ export default function My() {
               {!synced ? '클라우드에서 불러오는 중...' : '응시할 시험을 추가하고 D-Day를 확인하세요'}
             </p>
           </div>
-          {/* 로그인 상태: 사용자 정보 + 로그아웃 버튼 */}
-          {!authLoading && user && (
-            <button
-              onClick={signOut}
-              style={{ background: 'rgba(255,255,255,0.2)', border: 'none', borderRadius: 20, padding: '6px 12px', color: 'white', fontSize: 12, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
-            >
-              <span style={{ maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {user.user_metadata?.name || user.email}
-              </span>
-              <span style={{ fontSize: 14 }}>✕</span>
-            </button>
-          )}
         </div>
       </div>
 
@@ -168,6 +156,16 @@ export default function My() {
             );
           })}
         </div>
+
+        {/* 로그아웃 버튼 */}
+        {!authLoading && user && (
+          <button
+            onClick={signOut}
+            style={{ width: '100%', marginTop: 20, padding: '13px', borderRadius: 12, border: '1.5px solid #EDE8FF', background: 'white', color: '#9B88CC', fontSize: 14, fontWeight: 600, cursor: 'pointer' }}
+          >
+            로그아웃
+          </button>
+        )}
       </div>
     </div>
   );
