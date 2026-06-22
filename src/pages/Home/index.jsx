@@ -99,7 +99,7 @@ export default function Home() {
             <div style={{ fontSize: 22, fontWeight: 700 }}>
               안녕하세요! <span style={{ color: '#F0E060' }}>{displayName}</span> 👋
             </div>
-            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 6 }}>오늘도 조금씩, 함께 시작해요</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 6 }}>미루지말고 지금 뭐라도 시작하자</div>
           </div>
           <div style={{ width: 42, height: 42, borderRadius: 12, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 800, color: 'white' }}>
             T
